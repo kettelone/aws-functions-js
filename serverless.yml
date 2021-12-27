@@ -1,0 +1,45 @@
+service: aws-node-http-api-project
+frameworkVersion: '2 || 3'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: '20201221'
+
+functions:
+  hello:
+    handler: src/hello.handler
+    events:
+      - httpApi:
+          path: /hello
+          method: get
+  findFirstPositiveSLS:
+    handler: src/findFirstPositiveSLS.handler
+    events:
+      - httpApi:
+          path: /find-positive
+          method: post
+  findSumOfPositiveSLS:
+    handler: src/findSumOfPositiveSLS.handler
+    events:
+      - httpApi:
+          path: /calculate-sum
+          method: post
+  findSumAndProductSLS:
+    handler: src/findSumAndProductSLS.handler
+    events:
+      - httpApi:
+          path: /find-sum-and-product
+          method: post
+  findIndexOfDateSLS:
+    handler: src/findIndexOfDateSLS.handler
+    events:
+      - httpApi:
+          path: /find-index
+          method: get
+  sortUserInputSLS:
+    handler: src/sortUserInputSLS.handler
+    events:
+      - httpApi:
+          path: /sort-input
+          method: post
