@@ -1,17 +1,19 @@
 'use strict'
 
 const findSumAndProductSLS = async (event) => {
-  let arr = JSON.parse(event.body).array
-  let n = JSON.parse(event.body).n
-  let sum = 0
-  let product = 1
+  const arr = JSON.parse(event.body).array
+  const n = JSON.parse(event.body).n
+  const arrSliced = arr.slice(0, n)
 
-  for (let i = 0; i < n; i++) {
-    if (typeof arr[i] == 'number') {
-      sum += arr[i]
-      product *= arr[i]
-    }
-  }
+  const sum = arrSliced.reduce(
+    (prev, cur) => (typeof cur === 'number' ? prev + cur : prev),
+    0
+  )
+  const product = arrSliced.reduce(
+    (prev, cur) => (typeof cur === 'number' ? prev * cur : prev),
+    1
+  )
+
   const responseString = `sum is ${sum}, product is ${product}`
   const response = {
     statusCode: 200,

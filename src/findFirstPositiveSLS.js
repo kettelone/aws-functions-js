@@ -2,15 +2,10 @@
 
 const findFirstPositiveSLS = async (event) => {
   let arr = JSON.parse(event.body).array
-  let numberInfo = null
 
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] > 0) {
-      numberInfo = { number: arr[i], index: i }
-      break
-    }
-  }
-  return numberInfo != null
+  let numberInfo = arr.find((el) => el > 0)
+
+  return numberInfo
     ? { statusCode: 200, body: JSON.stringify(numberInfo) }
     : {
         statusCode: 200,
