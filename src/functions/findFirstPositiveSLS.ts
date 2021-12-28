@@ -1,9 +1,8 @@
 'use strict'
+const findFirstPositiveSLS = async (event:any) => {
+  const arr:Array<number> = JSON.parse(event.body)
 
-const findFirstPositiveSLS = async (event) => {
-  let arr = JSON.parse(event.body).array
-
-  let numberInfo = arr.find((el) => el > 0)
+  const numberInfo = arr.find((el) => typeof el === 'number' && el > 0)
 
   return numberInfo
     ? { statusCode: 200, body: JSON.stringify(numberInfo) }

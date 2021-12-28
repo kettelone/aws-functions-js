@@ -1,8 +1,8 @@
 'use strict'
 
-const sortUserInputSLS = async (event) => {
+const sortUserInputSLS = async (event: any) => {
   //sort by first and last name
-  const sortedByName = (list) => {
+  const sortedByName = (list:any) => {
     return list.sort((a, b) => {
       if (a.firstName > b.firstName) {
         return 1
@@ -16,15 +16,15 @@ const sortUserInputSLS = async (event) => {
     })
   }
   //  sort by date of birth
-  const sortedByDate = (list) => {
+  const sortedByDate = (list:any) => {
     return list.sort((a, b) => (a.birthDate < b.birthDate ? 1 : -1))
   }
 
   const response = {
     statusCode: 200,
     body: JSON.stringify({
-      sortedByDate: sortedByDate(JSON.parse(event.body).names),
-      sortedByName: sortedByName(JSON.parse(event.body).names),
+      sortedByDate: sortedByDate(JSON.parse(event.body)),
+      sortedByName: sortedByName(JSON.parse(event.body)),
     }),
   }
   return response

@@ -1,8 +1,7 @@
 'use strict'
-
-const findSumAndProductSLS = async (event) => {
-  const arr = JSON.parse(event.body).array
-  const n = JSON.parse(event.body).n
+const findSumAndProductSLS = async (event:any) => {
+  const arr: Array<number> = JSON.parse(event.body).array
+  const n: number = JSON.parse(event.body).n
   const arrSliced = arr.slice(0, n)
 
   const sum = arrSliced.reduce(

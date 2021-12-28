@@ -1,6 +1,6 @@
 'use strict'
 
-const hello = async (event) => {
+const hello = async (event:Record<string, unknown>) => {
   return {
     statusCode: 200,
     body: JSON.stringify(

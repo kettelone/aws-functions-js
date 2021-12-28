@@ -8,37 +8,37 @@ provider:
 
 functions:
   hello:
-    handler: src/hello.handler
+    handler: dist/functions/hello.handler
     events:
       - httpApi:
           path: /hello
           method: get
   findFirstPositiveSLS:
-    handler: src/findFirstPositiveSLS.handler
+    handler: dist/functions/findFirstPositiveSLS.handler
     events:
       - httpApi:
           path: /find-positive
           method: post
   findSumOfPositiveSLS:
-    handler: src/findSumOfPositiveSLS.handler
+    handler: dist/functions/findSumOfPositiveSLS.handler
     events:
       - httpApi:
           path: /calculate-sum
           method: post
   findSumAndProductSLS:
-    handler: src/findSumAndProductSLS.handler
+    handler: dist/functions/findSumAndProductSLS.handler
     events:
       - httpApi:
           path: /find-sum-and-product
           method: post
   findIndexOfDateSLS:
-    handler: src/findIndexOfDateSLS.handler
+    handler: dist/functions/findIndexOfDateSLS.handler
     events:
       - httpApi:
           path: /find-index
           method: get
   sortUserInputSLS:
-    handler: src/sortUserInputSLS.handler
+    handler: dist/functions/sortUserInputSLS.handler
     events:
       - httpApi:
           path: /sort-input
