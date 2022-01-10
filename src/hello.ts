@@ -1,6 +1,10 @@
 'use strict'
+import { 
+  APIGatewayProxyEvent, 
+  APIGatewayProxyResult 
+} from "aws-lambda";
 
-const hello = async (event:Record<string, unknown>) => {
+const hello = async (event:APIGatewayProxyEvent):Promise<APIGatewayProxyResult> => {
   return {
     statusCode: 200,
     body: JSON.stringify(

@@ -1,5 +1,10 @@
 'use strict'
-const findSumOfPositiveSLS = async (event: any) => {
+import { 
+  APIGatewayProxyEvent, 
+  APIGatewayProxyResult 
+} from "aws-lambda";
+
+const findSumOfPositiveSLS = async (event: APIGatewayProxyEvent):Promise<APIGatewayProxyResult> => {
   const arr: Array<number> = JSON.parse(event.body)
   const sum: number = arr.reduce(function (prev, curr) {
     return curr > 0 ? prev + curr : prev

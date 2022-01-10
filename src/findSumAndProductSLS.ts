@@ -1,5 +1,10 @@
 'use strict'
-const findSumAndProductSLS = async (event:any) => {
+import { 
+  APIGatewayProxyEvent, 
+  APIGatewayProxyResult 
+} from "aws-lambda";
+
+const findSumAndProductSLS = async (event:APIGatewayProxyEvent):Promise<APIGatewayProxyResult> => {
   const arr: Array<number> = JSON.parse(event.body).array
   const n: number = JSON.parse(event.body).n
   const arrSliced = arr.slice(0, n)

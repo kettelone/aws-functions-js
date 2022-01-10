@@ -1,6 +1,9 @@
 'use strict'
+import { 
+  APIGatewayProxyResult 
+} from "aws-lambda";
 
-const findIndexOfDateSLS = async () => {
+const findIndexOfDateSLS = async (): Promise<APIGatewayProxyResult> => {
   const currentYear = new Date().getFullYear()
   const currentMonth = new Date().getMonth()
   const currentDay = new Date().getDate()

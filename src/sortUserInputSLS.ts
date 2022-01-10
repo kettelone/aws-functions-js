@@ -1,8 +1,20 @@
 'use strict'
+import { 
+  APIGatewayProxyEvent, 
+  APIGatewayProxyResult 
+} from "aws-lambda";
 
-const sortUserInputSLS = async (event: any) => {
+interface PersonInfo {
+  firstName: string;
+  lastName: string;
+  birthDate: number;
+}
+
+type peopleInfoType = PersonInfo[];
+
+const sortUserInputSLS = async (event: APIGatewayProxyEvent):Promise<APIGatewayProxyResult> => {
   //sort by first and last name
-  const sortedByName = (list:any) => {
+  const sortedByName = (list:peopleInfoType) => {
     return list.sort((a, b) => {
       if (a.firstName > b.firstName) {
         return 1
@@ -16,7 +28,7 @@ const sortUserInputSLS = async (event: any) => {
     })
   }
   //  sort by date of birth
-  const sortedByDate = (list:any) => {
+  const sortedByDate = (list:peopleInfoType) => {
     return list.sort((a, b) => (a.birthDate < b.birthDate ? 1 : -1))
   }
 

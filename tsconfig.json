@@ -1,19 +1,18 @@
 {    
      "compilerOptions": {
-      "lib": ["ESNext"],
+      "lib": ["ESNext"],//options can be ES5, ES6, ES2020, DOM ect.
       "moduleResolution": "node",
       "noUnusedLocals": true,
       "noUnusedParameters": true,
       "removeComments": true,
-      "target": "ES2020",
+      "target": "ES5",
       "outDir": "./dist"
     },
-    "include": ["src/", "serverless.ts"],
+    "include": ["src/"],
     "exclude": [
       "node_modules/**/*",
       ".serverless/**/*",
       ".webpack/**/*",
-      "_warmup/**/*",
       ".vscode/**/*"
     ],
     "ts-node": {

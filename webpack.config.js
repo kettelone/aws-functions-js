@@ -1,20 +1,27 @@
+const path = require('path')
+const slsw = require('serverless-webpack')
+
 module.exports = {
-  entry: './src/*.ts',
-  output: {
-    filename: './dist/*.js',
-  },
-  // Enable sourcemaps for debugging webpack's output.
-  devtool: 'source-map',
-  resolve: {
-    // Add '.ts' and '.tsx' as resolvable extensions.
-    extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js'],
-  },
+  entry: slsw.lib.entries,
+  target: 'node',
+  mode: slsw.lib.webpack.isLocal ? 'development' : 'production',
   module: {
     rules: [
-      // All files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'.
-      { test: /\.tsx?$/, loader: 'ts-loader' },
-      // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-      { test: /\.js$/, loader: 'source-map-loader' },
+      {
+        test: /\.js$/,
+        include: __dirname,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'babel-loader',
+          },
+        ],
+      },
     ],
+  },
+  output: {
+    libraryTarget: 'commonjs',
+    path: path.join(__dirname, '.webpack'),
+    filename: '[name].js',
   },
 }

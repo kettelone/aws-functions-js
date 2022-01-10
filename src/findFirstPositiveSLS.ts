@@ -1,6 +1,11 @@
 'use strict'
-const findFirstPositiveSLS = async (event:any) => {
-  const arr:Array<number> = JSON.parse(event.body)
+import { 
+  APIGatewayProxyEvent, 
+  APIGatewayProxyResult 
+} from "aws-lambda";
+
+const findFirstPositiveSLS = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
+  const arr:Array<number> = JSON.parse(event.body).array
 
   const numberInfo = arr.find((el) => typeof el === 'number' && el > 0)
 
